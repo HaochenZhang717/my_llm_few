@@ -1,0 +1,21 @@
+export CUDA_VISIBLE_DEVICES=1
+python -u main.py \
+  --epochs 3 \
+  --batch_size 32 \
+  --lr 0.0002 \
+  --gamma 0.8 \
+  --step_size 50 \
+  --dataset Handwriting \
+  --length 152 \
+  --dimensions 3 \
+  --num_class 26 \
+  --few_shot 1 \
+  --llm gpt2 \
+  --lora 1 \
+  --patch_len 32 \
+  --stride 16 \
+  --channel 256 \
+  --depth 3 \
+  --reduced_size 128 \
+  --kernel_size 3 \
+  --path HW_ckpt

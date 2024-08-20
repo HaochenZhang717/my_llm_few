@@ -1,0 +1,9 @@
+# Ignore PyCharm specific directory
+.idea/
+
+# Ignore Python bytecode
+__pycache__/
+*.pyc
+
+# Ignore other files that should not be in the repository
+.DS_Store  # MacOS specific

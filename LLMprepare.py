@@ -28,6 +28,7 @@ def LLMprepare(configs):
     )
     # Apply LoRA modifications if requested
     if configs.lora:
+        breakpoint()
         lora_config = config['lora_config']
         lora_config['lora_dropout'] = configs.dropout  # Update dropout with user input
         llm_model = get_peft_model(llm_model, LoraConfig(**lora_config))

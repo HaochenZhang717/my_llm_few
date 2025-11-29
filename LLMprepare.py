@@ -17,7 +17,9 @@ def LLMprepare(configs):
     d_model = config["dim"]
 
     model_class = eval(config["model_class"])
-
+    print(model_class)
+    print(model_path)
+    breakpoint()
     llm_model = model_class.from_pretrained(
         model_path,
         trust_remote_code=True,

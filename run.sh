@@ -10,7 +10,7 @@ python -u main.py \
   --dimensions 3 \
   --num_class 26 \
   --few_shot 1 \
-  --llm gpt2 \
+  --llm qwen0.5 \
   --lora 1 \
   --patch_len 32 \
   --stride 16 \

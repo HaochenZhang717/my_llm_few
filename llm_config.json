@@ -49,7 +49,7 @@
     },
     "qwen0.5": {
         "dim": 896,
-        "path": "/path/to/your/pretrained/folder/Qwen2-0.5B-Instruct",
+        "path": "Qwen/Qwen2.5-0.5B-Instruct",
         "model_class": "AutoModel",
         "lora_config": {
             "r": 8,

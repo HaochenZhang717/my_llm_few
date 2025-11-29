@@ -23,7 +23,7 @@ def LLMprepare(configs):
     llm_model = model_class.from_pretrained(
         model_path,
         trust_remote_code=True,
-        local_files_only=True,
+        local_files_only=False,
         torch_dtype=torch.bfloat16
     )
     # Apply LoRA modifications if requested

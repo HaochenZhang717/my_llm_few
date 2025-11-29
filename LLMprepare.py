@@ -36,6 +36,7 @@ def LLMprepare(configs):
         for name, param in llm_model.named_parameters():
             param.requires_grad = ('lora' in name)
     else:
+        breakpoint()
         for name, param in llm_model.named_parameters():
             param.requires_grad = False
 

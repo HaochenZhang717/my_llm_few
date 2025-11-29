@@ -1,5 +1,5 @@
 import torch
-from torch.utils.tensorboard import SummaryWriter
+# from torch.utils.tensorboard import SummaryWriter
 from torchmetrics.classification import MulticlassAccuracy, MulticlassPrecision, MulticlassRecall, MulticlassF1Score
 import time
 from datetime import datetime
@@ -14,8 +14,8 @@ class Trainer:
         self.optimizer = torch.optim.Adam(model.parameters(), lr=configs.lr, weight_decay=configs.weight_decay)
         self.scheduler = torch.optim.lr_scheduler.StepLR(self.optimizer, step_size=configs.step_size, gamma=configs.gamma)
         self.loss_function = torch.nn.CrossEntropyLoss()
-        self.writer = SummaryWriter(
-            'tensorboard/' + configs.llm_type + configs.dataset + datetime.now().strftime("%Y%m%d%H%M%S"))
+        # self.writer = SummaryWriter(
+        #     'tensorboard/' + configs.llm_type + configs.dataset + datetime.now().strftime("%Y%m%d%H%M%S"))
         self.best_test_accuracy = 0
         self.best_epoch = 0
 
@@ -53,11 +53,11 @@ class Trainer:
         avg_f1 = total_f1.compute()
 
         # Log training metrics
-        self.writer.add_scalar('Train/Loss', avg_loss, global_step=self.scheduler.last_epoch)
-        self.writer.add_scalar('Train/Accuracy', avg_accuracy, global_step=self.scheduler.last_epoch)
-        self.writer.add_scalar('Train/Precision', avg_precision, global_step=self.scheduler.last_epoch)
-        self.writer.add_scalar('Train/Recall', avg_recall, global_step=self.scheduler.last_epoch)
-        self.writer.add_scalar('Train/F1 Score', avg_f1, global_step=self.scheduler.last_epoch)
+        # self.writer.add_scalar('Train/Loss', avg_loss, global_step=self.scheduler.last_epoch)
+        # self.writer.add_scalar('Train/Accuracy', avg_accuracy, global_step=self.scheduler.last_epoch)
+        # self.writer.add_scalar('Train/Precision', avg_precision, global_step=self.scheduler.last_epoch)
+        # self.writer.add_scalar('Train/Recall', avg_recall, global_step=self.scheduler.last_epoch)
+        # self.writer.add_scalar('Train/F1 Score', avg_f1, global_step=self.scheduler.last_epoch)
 
         print(f'Epoch {self.scheduler.last_epoch} - Train Loss: {avg_loss:.4f}, Accuracy: {avg_accuracy:.4f}, Precision: {avg_precision:.4f}, Recall: {avg_recall:.4f}, F1 Score: {avg_f1:.4f}')
 
@@ -92,11 +92,11 @@ class Trainer:
         avg_f1 = total_f1.compute()
 
         # Log test metrics
-        self.writer.add_scalar('Test/Loss', avg_loss, global_step=self.scheduler.last_epoch)
-        self.writer.add_scalar('Test/Accuracy', avg_accuracy, global_step=self.scheduler.last_epoch)
-        self.writer.add_scalar('Test/Precision', avg_precision, global_step=self.scheduler.last_epoch)
-        self.writer.add_scalar('Test/Recall', avg_recall, global_step=self.scheduler.last_epoch)
-        self.writer.add_scalar('Test/F1 Score', avg_f1, global_step=self.scheduler.last_epoch)
+        # self.writer.add_scalar('Test/Loss', avg_loss, global_step=self.scheduler.last_epoch)
+        # self.writer.add_scalar('Test/Accuracy', avg_accuracy, global_step=self.scheduler.last_epoch)
+        # self.writer.add_scalar('Test/Precision', avg_precision, global_step=self.scheduler.last_epoch)
+        # self.writer.add_scalar('Test/Recall', avg_recall, global_step=self.scheduler.last_epoch)
+        # self.writer.add_scalar('Test/F1 Score', avg_f1, global_step=self.scheduler.last_epoch)
 
         print(f'Epoch {self.scheduler.last_epoch} - Test Loss: {avg_loss:.4f}, Accuracy: {avg_accuracy:.4f}, Precision: {avg_precision:.4f}, Recall: {avg_recall:.4f}, F1 Score: {avg_f1:.4f}')
 
@@ -122,6 +122,6 @@ class Trainer:
             elapsed_time = time.time() - start_time
             print(f'Epoch {epoch + 1} completed in {elapsed_time:.2f} seconds.')
 
-        self.writer.close()
+        # self.writer.close()
         print('Training complete.')
         print(f'Best Test Performance at Epoch {self.best_epoch + 1}: Accuracy {self.best_test_accuracy:.4f}')
